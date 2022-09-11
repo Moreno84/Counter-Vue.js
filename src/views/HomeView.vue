@@ -1,54 +1,31 @@
 <template>
   <div class="home">
-    <div class="count" :class="color">
-        {{count}}
-    </div>
+    <Counter/>
     <div class="buttons">
-      <button @click="increase">+</button>
-      <button @click="decrease">-</button>
+      <button @click="storeCounter.increaseCount">+</button>
+      <button @click="storeCounter.decreaseCount">-</button>
       <div class="reset">
-        <button @click="reset">Reset</button>
+        <button @click="storeCounter.resetCount">Reset</button>
       </div>
       
     </div>
     <hr>
     <div>
-      The number is: {{oddEven}}
+      This counter is: {{storeCounter.oddOrEven}}
     </div>
-    <hr/>
-    <input type="number" v-model="count"/>
+    <hr>
+    <div>
+    <h3>Edit counter</h3>
+    <input type="number" v-model="storeCounter.count"/>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { useCounterStore } from '@/stores/counter';
+import Counter from '../components/Counter.vue';
 
-const count = ref(0);
-
-const increase = () => count.value++;
-
-const decrease = () => count.value--;
-
-const reset = () => count.value = 0;
-
-const oddEven = computed(()=>{
-  if(count.value % 2 === 0){
-    return "Even"
-  }else{
-    return "Odd"
-  }
-})
-
-const color = computed(()=>{
-  if(count.value === 0){
-    return 'red'
-  }else{
-    return 'green'
-  }
-})
-
-
-
+const storeCounter = useCounterStore();
 
 </script>
 
@@ -61,11 +38,11 @@ const color = computed(()=>{
 
   .buttons button{
     font-size: 40px;
-    margin: 10px 5px
+    margin: 10px;
   }
 
 .reset button {
-    border-radius: 15px;
+   font-size: 40px;
   }
 
   
