@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>Counter 1</h1>
     <Counter/>
     <div class="buttons">
       <button class="w-50 p-1" @click="storeCounter.increaseCount">+</button>
