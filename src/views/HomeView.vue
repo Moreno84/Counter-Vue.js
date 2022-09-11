@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
+  <div class="container">
     <Counter/>
     <div class="buttons">
-      <button @click="storeCounter.increaseCount">+</button>
-      <button @click="storeCounter.decreaseCount">-</button>
+      <button class="w-50 p-1" @click="storeCounter.increaseCount">+</button>
+      <button class="w-50 p-1" @click="storeCounter.decreaseCount">-</button>
       <div class="reset">
         <button @click="storeCounter.resetCount">Reset</button>
       </div>
@@ -15,7 +15,7 @@
     </div>
     <hr>
     <div>
-    <h3>Edit counter</h3>
+    <h3>Editing counter</h3>
     <input type="number" v-model="storeCounter.count"/>
     </div>
   </div>
@@ -23,6 +23,7 @@
 
 <script setup>
 import { useCounterStore } from '@/stores/counter';
+import { computed } from '@vue/runtime-core';
 import Counter from '../components/Counter.vue';
 
 const storeCounter = useCounterStore();
@@ -31,7 +32,7 @@ const storeCounter = useCounterStore();
 
 
 <style>
-  .count{
+  /* .count{
     font-size: 60px;
     margin: 20px;
   }
@@ -43,7 +44,7 @@ const storeCounter = useCounterStore();
 
 .reset button {
    font-size: 40px;
-  }
+  } */
 
   
 
